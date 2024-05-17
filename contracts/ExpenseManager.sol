@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.21;
 
 contract ExpenseManager {
     address public owner;
@@ -15,6 +15,11 @@ contract ExpenseManager {
         owner = msg.sender;
     }
 
+    modifier onlyOwner(){
+        require(msg.sender==owner,"Only Owner can execute this");
+        _;
+    }
+
     mapping(address=>uint) public balances;
 
     event Deposit(address indexed _from,uint _amount,string _reason,uint _timestamp);
@@ -27,7 +32,7 @@ contract ExpenseManager {
         emit Deposit(msg.sender, _amount,_reason,block.timestamp);
     }
     function withdraw(uint _amount,string memory _reason) public {
-        require(balances[msg.sender]+= _amount,"Insufficient balance");
+        require(balances[msg.sender] >= _amount, "Insufficient balance");
         balances[msg.sender]-= _amount;
         transactions.push(Transaction(msg.sender,_amount,_reason,block.timestamp));
         payable(msg.sender).transfer(_amount);
@@ -58,7 +63,8 @@ contract ExpenseManager {
         }
         return (users,amounts,reasons,timestamps);
     }
-    function changeOwner(address _newOwner) public onlyOwner{
-        owner=_newOwner;
+    function changeOwner(address _newOwner) public onlyOwner {
+        owner = _newOwner;
     }
+
 }
