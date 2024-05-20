@@ -16,14 +16,14 @@ class _WithdrawState extends State<Withdraw> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.accent,
+      backgroundColor: Colors.red[100],
       body:Container(
         margin: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height:80),
-            Text("Deposit Details",
+            Text("Withdraw Details",
               style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold
