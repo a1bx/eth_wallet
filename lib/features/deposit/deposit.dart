@@ -16,7 +16,7 @@ class _DepositState extends State<Deposit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.accent,
+      backgroundColor: Colors.green[100],
       body:Container(
         margin: const EdgeInsets.all(16),
         child: Column(
