@@ -1,3 +1,5 @@
+import 'package:eth_wallet/features/deposit/deposit.dart';
+import 'package:eth_wallet/features/withdraw/withdraw.dart';
 import 'package:eth_wallet/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -51,31 +53,40 @@ class _DashboardState extends State<Dashboard> {
             const SizedBox(height:12),
             Row(
               children: [
-                Expanded(child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),
-                  color: Colors.teal
-                  ),
-                  child: Center(
-                    child: Text("+ Deposit",style: TextStyle(
-                      color: Colors.redAccent, fontSize:24,fontWeight: FontWeight.bold
+                Expanded(child: InkWell(
+                  onTap: ()=> Navigator.push(context,MaterialPageRoute(builder: (context)=>Deposit())),
+                  child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),
+                        color: Colors.tealAccent
                     ),
+                    child: Center(
+                      child: Text("+ Deposit",style: TextStyle(
+                          color: Colors.teal, fontSize:24,fontWeight: FontWeight.bold
+                      ),
+                      ),
                     ),
                   ),
-                )),
+                )
+                ),
                 const SizedBox(width:8),
-                Expanded(child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),
-                      color: Colors.redAccent
-                  ),
-                  child: Center(
-                    child: Text("- Withdraw",style: TextStyle(
-                        color: Colors.tealAccent, fontSize:24,fontWeight: FontWeight.bold
+                Expanded(
+                    child: InkWell(
+                      onTap: ()=> Navigator.push(context,MaterialPageRoute(builder: (context)=>Withdraw())),
+                      child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),
+                        color: Colors.redAccent
                     ),
+                    child: Center(
+                      child: Text("- Withdraw",style: TextStyle(
+                          color: Colors.tealAccent, fontSize:24,fontWeight: FontWeight.bold
+                      ),
+                      ),
                     ),
                   ),
-                ))
+                )
+                )
               ],
             ),
             const SizedBox(
@@ -83,7 +94,10 @@ class _DashboardState extends State<Dashboard> {
             Text("Transactions",style: TextStyle (
               fontSize: 20,
               fontWeight: FontWeight.bold
-            ) ,),
+            ) ,
+            ),
+            const SizedBox(
+                height: 20),
             Expanded(child: ListView(
               children: [
                 Container(
@@ -92,8 +106,27 @@ class _DashboardState extends State<Dashboard> {
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.white
                   ),
-                  child: Row(
-                    children: [Text("1 ETH")
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          SvgPicture.asset("assets/Ethereum logo.svg",
+                            height: 24,
+                            width: 24,),
+                          const SizedBox(width: 12),
+                          const Text("1 ETH",style: TextStyle(
+                            fontSize: 20,fontWeight: FontWeight.bold
+                          ),
+                          )
+                        ],
+                      ),
+                      const Text("0xc8b6BC33e01b2cE7E73226BA67CcD5115B3467A1",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      Text("NFT Purchase",
+                        style: TextStyle(fontSize: 16),
+                      )
                     ],
                   ),
                 )
