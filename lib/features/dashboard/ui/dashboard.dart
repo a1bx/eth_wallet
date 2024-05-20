@@ -14,6 +14,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Eth Wallet"),
+        backgroundColor: ,
       ),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
