@@ -1,4 +1,4 @@
-import 'package:eth_wallet/dashboard/ui/dashboard.dart';
+import 'package:eth_wallet/features/dashboard/ui/dashboard.dart';
 import 'package:flutter/material.dart';
 
 void main() {
